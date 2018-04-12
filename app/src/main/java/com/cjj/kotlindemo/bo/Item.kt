@@ -1,4 +1,4 @@
-package com.cjj.kotlindemo
+package com.cjj.kotlindemo.bo
 
 /**
  * Created by chenjiajuan on 2018/4/9.

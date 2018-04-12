@@ -6,7 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
+import com.cjj.kotlindemo.activity.HomeActivity
 import com.cjj.kotlindemo.view.VTipViewLayout
 import com.cjj.kotlindemo.lastChar3 as last
 
@@ -21,8 +21,8 @@ class MainActivity : Activity() {
         tvFirst!!.text="Hello World !!!!!!"
         tvFirst!!.setTextColor(Color.BLUE)
         tvFirst!!.setOnClickListener({
-            Toast.makeText(this,"Hello World",Toast.LENGTH_SHORT).show()
-            var intent=Intent(this,ListActivity::class.java)
+            //Toast.makeText(this,"Hello World",Toast.LENGTH_SHORT).show()
+            var intent=Intent(this, HomeActivity::class.java)
             this.startActivity(intent)
         })
 
