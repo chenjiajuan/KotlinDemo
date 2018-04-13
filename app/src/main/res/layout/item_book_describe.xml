@@ -18,13 +18,45 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
+            android:text="魔道祖师"
+            android:textSize="16sp"
             />
         <TextView
-            android:id="@+id/tvBookDescribe"
+            android:id="@+id/tvBookAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="3"
             android:ellipsize="end"
+            android:text="墨香铜臭"
+            android:textSize="14sp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+        <RatingBar
+            android:id="@+id/rtNumRaters"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:maxHeight="20dp"
+            android:maxWidth="80dp"
+            />
+        <TextView
+            android:id="@+id/tvAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvBookDescribe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="14sp"
             />
     </LinearLayout>
 

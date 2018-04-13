@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.cjj.kotlindemo.R
@@ -16,12 +17,12 @@ import com.cjj.kotlindemo.interfac.OnItemClickListener
  * Created by chenjiajuan on 2018/4/12.
  */
 class BookListAdapter : RecyclerView.Adapter<BookListAdapter.BookItemViewHolder> {
-    var mContext:Context?=null
+    var context:Context?=null
     var mBookItem:BookItem?=null
     var onItemClick: OnItemClickListener?=null
 
     constructor(context:Context,bookList:BookItem){
-        this.mContext=context
+        this.context =context
         this.mBookItem=bookList
     }
 
@@ -31,32 +32,34 @@ class BookListAdapter : RecyclerView.Adapter<BookListAdapter.BookItemViewHolder>
     override fun onBindViewHolder(holder: BookItemViewHolder?, position: Int) {
         var bookItem=mBookItem!!.books[position]
         holder?.tvBookName?.text=bookItem.title
-        holder?.tvBookDescribe?.text=bookItem.author.toString()
-        Glide.with(mContext).load(bookItem?.image).into(holder?.ivBookPicture)
-        holder?.itemView?.setOnClickListener(object :View.OnClickListener{
-            override fun onClick(p0: View?) {
-                onItemClick?.onItemClick(position,bookItem.alt)
-            }
-        })
+        holder?.tvBookDescribe?.text=bookItem.summary
+        holder?.tvBookAuthor?.text=bookItem.author[0].toString()
+        holder?.tvAverage?.text=bookItem.rating.average
+        Glide.with(context).load(bookItem?.image).into(holder?.ivBookPicture)
+        holder?.itemView?.setOnClickListener { onItemClick?.onItemClick(position,bookItem.alt) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BookItemViewHolder {
-
-        return BookItemViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_book_describe,parent,false))
+        return BookItemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_book_describe,parent,false))
     }
 
     override fun getItemCount(): Int =mBookItem!!.books.size
-
 
     class BookItemViewHolder:RecyclerView.ViewHolder{
         var ivBookPicture:ImageView?=null
         var tvBookName:TextView?=null
         var tvBookDescribe:TextView?=null
+        var tvBookAuthor:TextView?=null
+        var tvAverage:TextView?= null
+        var rtNumRaters:RatingBar?=null
 
         constructor(view:View) :super(view){
             ivBookPicture=view.findViewById(R.id.ivBookPicture)
             tvBookDescribe=view.findViewById(R.id.tvBookDescribe)
             tvBookName=view.findViewById(R.id.tvBookName)
+            tvBookAuthor=view.findViewById(R.id.tvBookAuthor)
+            tvAverage=view.findViewById(R.id.tvAverage)
+            rtNumRaters=view.findViewById(R.id.rtNumRaters)
 
         }
 

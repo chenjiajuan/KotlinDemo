@@ -22,9 +22,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var toggle :ActionBarDrawerToggle?=null
     var movieFragment: MovieFragment?=null
     var booksFragment: BooksFragment?=null
-//    var url:String ="https://api.douban.com/v2/book/1220562"
-//    var url:String ="https://www.douban.com/service/auth2/auth"
-    //537096553806
     val host = "https://acs.m.taobao.com/gw/mtop.taobao.detail.getdetail/6.0/?data="
     val tag = "%7B%22itemNumId%22%3A%22"
     val tag2 = "%22%2C%22detail_v%22%3A%223.1.0%22%7D"

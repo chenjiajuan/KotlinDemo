@@ -50,5 +50,6 @@ class DetailActivity :Activity() {
             }
         })
 
+
     }
 }
