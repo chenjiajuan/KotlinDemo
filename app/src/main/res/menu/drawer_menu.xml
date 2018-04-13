@@ -8,20 +8,20 @@
                 android:id="@+id/nav_menu_area"
                 android:checkable="true"
                 android:checked="true"
-                android:title="地区分类"/>
+                android:title="图书"/>
             <item
                 android:id="@+id/nav_menu_picture"
                 android:checkable="true"
-                android:title="图片分类"/>
+                android:title="电影"/>
 
             <item
                 android:id="@+id/nav_menu_station"
                 android:checkable="true"
-                android:title="名站写真"/>
+                android:title="音乐"/>
             <item
                 android:id="@+id/nav_menu_diagrams"
                 android:checkable="true"
-                android:title="精彩套图"/>
+                android:title="相册"/>
         </menu>
     </item>
 

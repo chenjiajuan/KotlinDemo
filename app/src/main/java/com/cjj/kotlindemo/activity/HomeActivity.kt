@@ -9,10 +9,9 @@ import android.util.Log
 import android.view.MenuItem
 import com.alibaba.fastjson.JSON
 import com.cjj.kotlindemo.R
-import com.cjj.kotlindemo.bo.BookDetail
 import com.cjj.kotlindemo.bo.BookItem
-import com.cjj.kotlindemo.fragment.AreaFragment
-import com.cjj.kotlindemo.fragment.PicturnFragment
+import com.cjj.kotlindemo.fragment.BooksFragment
+import com.cjj.kotlindemo.fragment.MovieFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import okhttp3.*
@@ -21,8 +20,8 @@ import java.io.IOException
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     var toggle :ActionBarDrawerToggle?=null
-    var mPictureFragment:PicturnFragment ?=null
-    var mAreaFragment:AreaFragment?=null
+    var movieFragment: MovieFragment?=null
+    var booksFragment: BooksFragment?=null
 //    var url:String ="https://api.douban.com/v2/book/1220562"
 //    var url:String ="https://www.douban.com/service/auth2/auth"
     //537096553806
@@ -87,7 +86,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun showArea() {
         val supportFragmentManager=supportFragmentManager
         val  fragmentTransaction=supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.fl_main_content,AreaFragment.newInstance())
+        fragmentTransaction.add(R.id.fl_main_content, BooksFragment.newInstance())
         fragmentTransaction.commit()
     }
 
@@ -96,20 +95,20 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         hideAllFragment(fragmentTransaction)
         when (item.itemId){
             R.id.nav_menu_picture -> {
-                mPictureFragment?.let {
+                movieFragment?.let {
                     fragmentTransaction.show(it)
-                } ?:PicturnFragment.newInstance().let {
-                    mPictureFragment=it
-                    fragmentTransaction.replace(R.id.fl_main_content,mPictureFragment,"picture")
+                } ?: MovieFragment.newInstance().let {
+                    movieFragment =it
+                    fragmentTransaction.replace(R.id.fl_main_content, movieFragment,"picture")
                     fragmentTransaction.show(it)
                 }
             }
             R.id.nav_menu_area -> {
-                mAreaFragment?.let {
+                booksFragment?.let {
                     fragmentTransaction.show(it)
-                }?:AreaFragment.newInstance().let {
-                    mAreaFragment=it
-                    fragmentTransaction.replace(R.id.fl_main_content,mAreaFragment,"area")
+                }?: BooksFragment.newInstance().let {
+                    booksFragment =it
+                    fragmentTransaction.replace(R.id.fl_main_content, booksFragment,"area")
                     fragmentTransaction.show(it)
                 }
             }
@@ -120,10 +119,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun hideAllFragment(fragmentTransaction: FragmentTransaction?) {
-        mAreaFragment?.let {
+        booksFragment?.let {
             fragmentTransaction?.hide(it)
         }
-        mPictureFragment?.let {
+        movieFragment?.let {
             fragmentTransaction?.hide(it)
         }
     }

@@ -17,4 +17,15 @@ abstract class BaseFragment : Fragment(){
     }
 
     abstract fun getLayoutResId():Int
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getBundle()
+        initView()
+        initData()
+    }
+
+    abstract fun getBundle()
+
+    abstract fun  initView()
+    abstract fun initData()
 }
