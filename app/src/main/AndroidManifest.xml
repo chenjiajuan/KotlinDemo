@@ -27,6 +27,9 @@
         <activity android:name=".activity.HomeActivity"
             android:screenOrientation="portrait"
             ></activity>
+        <activity android:name=".activity.BookDetailActivity"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.cjj.kotlindemo.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,8 +36,11 @@ class BookListAdapter : RecyclerView.Adapter<BookListAdapter.BookItemViewHolder>
         holder?.tvBookDescribe?.text=bookItem.summary
         holder?.tvBookAuthor?.text=bookItem.author[0].toString()
         holder?.tvAverage?.text=bookItem.rating.average
-        Glide.with(context).load(bookItem?.image).into(holder?.ivBookPicture)
-        holder?.itemView?.setOnClickListener { onItemClick?.onItemClick(position,bookItem.alt) }
+        Glide.with(context).load(bookItem?.images?.large).into(holder?.ivBookPicture)
+        holder?.itemView?.setOnClickListener {
+            Log.e("TAG","onClicks")
+            this.onItemClick?.onItemClick(position,bookItem.id)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BookItemViewHolder {

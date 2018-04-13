@@ -1,5 +1,6 @@
 package com.cjj.kotlindemo.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,6 +9,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import com.alibaba.fastjson.JSON
 import com.cjj.kotlindemo.R
+import com.cjj.kotlindemo.activity.BookDetailActivity
 import com.cjj.kotlindemo.activity.ListActivity
 import com.cjj.kotlindemo.adapter.BookListAdapter
 import com.cjj.kotlindemo.bo.BookItem
@@ -22,9 +24,10 @@ import java.io.IOException
 class ContentFragment : BaseFragment() {
     var url:String="https://api.douban.com/v2/book/search?"
     var bookAdapter:BookListAdapter?=null
+    var type:String?=null
     override fun getBundle() {
-       var tag= arguments.getString("url")
-        url=url+"tag="+tag+"&count=40"
+        type= arguments.getString("url")
+        url=url+"tag="+type+"&count=40"
         Log.e("TAG"," url : "+url)
     }
 
@@ -44,11 +47,6 @@ class ContentFragment : BaseFragment() {
         tvContentId.text=url
         ryBookList.layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         ryBookList.addItemDecoration(ListActivity.SpacesItemDecoration(5))
-        bookAdapter?.setOnItemClickListener(object:OnItemClickListener{
-            override fun onItemClick(position: Int, name: String?) {
-
-            }
-        })
     }
 
     override fun initData() {
@@ -66,6 +64,16 @@ class ContentFragment : BaseFragment() {
                 var data= JSON.parseObject(string, BookItem::class.java)
                 Log.e("TAG","data : "+data.books.toString())
                 bookAdapter= BookListAdapter(context,data)
+                bookAdapter?.setOnItemClickListener(object:OnItemClickListener{
+                    override fun onItemClick(position: Int, name: String?) {
+                        Log.e("TAG","position : $position + name $name ")
+                        var intent=Intent(context,BookDetailActivity::class.java)
+                        intent.putExtra("bookId",name)
+                        intent.putExtra("title",type)
+                        startActivity(intent)
+
+                    }
+                })
                 myHandler.sendEmptyMessage(0)
             }
         })
