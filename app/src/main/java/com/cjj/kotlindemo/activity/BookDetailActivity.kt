@@ -26,7 +26,7 @@ import java.io.IOException
  * Created by chenjiajuan on 2018/4/13.
  */
 class BookDetailActivity:BaseBarActivity() {
-    private val TAG = BookDetailActivity::class.java!!.getSimpleName()
+    private val TAG = BookDetailActivity::class.java!!.simpleName
     private var url:String="https://api.douban.com/v2/book/"
     private var bookId:String ?=null
     private var bookDetail:BookDetail?=null

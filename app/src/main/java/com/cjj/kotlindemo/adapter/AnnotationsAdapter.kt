@@ -9,7 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.cjj.kotlindemo.R
 import com.cjj.kotlindemo.bo.Annotations
-
+/**
+ * Created by chenjiajuan on 2018/4/14.
+ */
 class AnnotationsAdapter :RecyclerView.Adapter<RecyclerView.ViewHolder>{
     var annotation:Annotations?=null
     var context:Context?=null

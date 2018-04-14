@@ -2,7 +2,6 @@ package com.cjj.kotlindemo.activity
 
 import android.app.Activity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -22,7 +21,7 @@ abstract class BaseBarActivity :Activity() {
         ivBaseBack=findViewById(R.id.ivBaseBack)
         rlContent=findViewById(R.id.rlContent)
         tvBaseName=findViewById(R.id.tvBaseName)
-        ivBaseBack?.setOnClickListener(View.OnClickListener {
+        ivBaseBack?.setOnClickListener({
            this.finish()
         })
         setTile(tvBaseName!!)

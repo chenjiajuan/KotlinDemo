@@ -19,7 +19,7 @@ import okhttp3.Response
 import java.io.IOException
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private val TAG = HomeActivity::class.java!!.getSimpleName()
+    private val TAG = HomeActivity::class.java!!.simpleName
     var toggle :ActionBarDrawerToggle?=null
     var movieFragment: MovieFragment?=null
     var booksFragment: BooksFragment?=null

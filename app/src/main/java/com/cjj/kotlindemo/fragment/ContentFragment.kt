@@ -22,13 +22,14 @@ import java.io.IOException
  * Created by chenjiajuan on 2018/4/12.
  */
 class ContentFragment : BaseFragment() {
+    private val TAG:String=ContentFragment::class.java!!.simpleName
     var url:String="https://api.douban.com/v2/book/search?"
     var bookAdapter:BookListAdapter?=null
     var type:String?=null
     override fun getBundle() {
         type= arguments.getString("url")
         url=url+"tag="+type+"&count=40"
-        Log.e("TAG"," url : "+url)
+        Log.e(TAG, " url : $url")
     }
 
     companion object {
@@ -62,7 +63,7 @@ class ContentFragment : BaseFragment() {
             override fun onResponse(call: Call?, response: Response?) {
                 var  string=response?.body()?.string()
                 var data= JSON.parseObject(string, BookItem::class.java)
-                Log.e("TAG","data : "+data.books.toString())
+                Log.e(TAG,"data : "+data.books.toString())
                 bookAdapter= BookListAdapter(context,data)
                 bookAdapter?.setOnItemClickListener(object:OnItemClickListener{
                     override fun onItemClick(position: Int, name: String?) {
