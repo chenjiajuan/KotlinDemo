@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--侧滑菜单-->
+    <item android:title="分类">
+        <menu>
+            <item
+                android:id="@+id/nav_menu_area"
+                android:checkable="true"
+                android:checked="true"
+                android:title="图书"/>
+            <item
+                android:id="@+id/nav_menu_picture"
+                android:checkable="true"
+                android:title="电影"/>
+
+            <item
+                android:id="@+id/nav_menu_station"
+                android:checkable="true"
+                android:title="音乐"/>
+            <item
+                android:id="@+id/nav_menu_diagrams"
+                android:checkable="true"
+                android:title="相册"/>
+        </menu>
+    </item>
+
+    <item android:title="选项">
+        <menu>
+
+            <item
+                android:id="@+id/nav_menu_about"
+                android:checkable="true"
+                android:title="关于"/>
+        </menu>
+    </item>
+
+
+</menu>
