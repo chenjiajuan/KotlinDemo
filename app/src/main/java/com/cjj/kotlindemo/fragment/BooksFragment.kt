@@ -10,19 +10,18 @@ import kotlinx.android.synthetic.main.fragment_books.*
 /**
  * Created by chenjiajuan on 2018/4/10.
  */
-class BooksFragment :BaseFragment() {
-     private  var TAB_TITLES = arrayListOf("小说", "随笔", "日本文学", "推理", "科幻", "童话", "诗歌", "耽美", "悬疑")
+class BooksFragment : BaseFragment() {
+    private var TAB_TITLES = arrayListOf("耽美", "悬疑","推理", "科幻", "童话", "古风","哲学","互联网","金融" )
     override fun getBundle() {
     }
 
     override fun initView() {
-        var areaAdapter= TabAdapter(childFragmentManager,getContentFragmentList(),TAB_TITLES)
-        viewPager.adapter=areaAdapter
+        var areaAdapter = TabAdapter(childFragmentManager, getContentFragmentList(), TAB_TITLES)
+        viewPager.adapter = areaAdapter
         tabLayout.setupWithViewPager(viewPager)
-        tabLayout.tabMode= MODE_SCROLLABLE
-        tabLayout.getTabAt(2)?.select()
-        tabLayout.setTabsFromPagerAdapter(areaAdapter)
-        tabLayout.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
+        tabLayout.tabMode = MODE_SCROLLABLE
+        tabLayout.getTabAt(0)?.select()
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
             }
@@ -37,10 +36,10 @@ class BooksFragment :BaseFragment() {
     }
 
     private fun getContentFragmentList(): ArrayList<Fragment> {
-        var fragmentList=ArrayList<Fragment>()
-        for (index  in TAB_TITLES.indices){
-            fragmentList.add(ContentFragment.getInstance("${TAB_TITLES[index]}"))
-        }
+        var url="https://api.douban.com/v2/book/search?tag="
+        var fragmentList = ArrayList<Fragment>()
+        TAB_TITLES.indices.mapTo(fragmentList) {
+            ContentFragment.getInstance("$url${TAB_TITLES[it]}") }
         return fragmentList
     }
 
@@ -49,8 +48,8 @@ class BooksFragment :BaseFragment() {
 
     companion object {
         fun newInstance(): BooksFragment {
-            var  fragment= BooksFragment()
-            return  fragment
+            var fragment = BooksFragment()
+            return fragment
         }
     }
 

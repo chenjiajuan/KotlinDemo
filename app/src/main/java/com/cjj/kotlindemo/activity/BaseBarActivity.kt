@@ -10,24 +10,25 @@ import com.cjj.kotlindemo.R
 /**
  * Created by chenjiajuan on 2018/4/13.
  */
-abstract class BaseBarActivity :Activity() {
+abstract class BaseBarActivity : Activity() {
 
-    var ivBaseBack:ImageView?=null
-    var tvBaseName:TextView?=null
-    var rlContent:RelativeLayout?=null
+    var ivBaseBack: ImageView? = null
+    var tvBaseName: TextView? = null
+    var rlContent: RelativeLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_bar)
-        ivBaseBack=findViewById(R.id.ivBaseBack)
-        rlContent=findViewById(R.id.rlContent)
-        tvBaseName=findViewById(R.id.tvBaseName)
+        ivBaseBack = findViewById(R.id.ivBaseBack)
+        rlContent = findViewById(R.id.rlContent)
+        tvBaseName = findViewById(R.id.tvBaseName)
         ivBaseBack?.setOnClickListener({
-           this.finish()
+            this.finish()
         })
-        setTile(tvBaseName!!)
         setContent(rlContent!!)
+        setTile(tvBaseName!!)
 
     }
-    abstract fun setTile(text:TextView)
-    abstract fun setContent(rlContent:RelativeLayout)
+
+    abstract fun setTile(text: TextView)
+    abstract fun setContent(rlContent: RelativeLayout)
 }

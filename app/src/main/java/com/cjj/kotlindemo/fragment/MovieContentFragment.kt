@@ -21,26 +21,23 @@ import java.io.IOException
 /**
  * Created by chenjiajuan on 2018/4/12.
  */
-class ContentFragment : BaseFragment() {
-    private val TAG: String = ContentFragment::class.java!!.simpleName
+class MovieContentFragment : BaseFragment() {
+    private val TAG: String = MovieContentFragment::class.java!!.simpleName
     private var url: String = ""
     private var bookAdapter: BookListAdapter? = null
     private var type: String? = null
-    private var title:String?=null
 
     override fun getBundle() {
         type = arguments.getString("url")
-        title=arguments.getString("title")
         url = type+"&count=40"
         Log.e(TAG, " url : $url")
     }
 
     companion object {
-        fun getInstance(url: String,title:String ): ContentFragment {
+        fun getInstance(url: String ): MovieContentFragment {
             var args = Bundle()
             args.putString("url", url)
-            args.putString("title",title)
-            var contentFragment = ContentFragment()
+            var contentFragment = MovieContentFragment()
             contentFragment.arguments = args
             return contentFragment
         }
@@ -74,7 +71,7 @@ class ContentFragment : BaseFragment() {
                         Log.e("TAG", "position : $position + name $name ")
                         var intent = Intent(context, BookDetailActivity::class.java)
                         intent.putExtra("bookId", name)
-                        intent.putExtra("title", title)
+                        intent.putExtra("title", type)
                         startActivity(intent)
 
                     }

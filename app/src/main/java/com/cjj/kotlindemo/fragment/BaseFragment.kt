@@ -9,14 +9,14 @@ import android.view.ViewGroup
 /**
  * Created by chenjiajuan on 2018/4/10.
  */
-abstract class BaseFragment : Fragment(){
-    private  var mView: View ?= null
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View ?{
-        mView=inflater?.inflate(getLayoutResId(),container,false)
+abstract class BaseFragment : Fragment() {
+    private var mView: View? = null
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mView = inflater?.inflate(getLayoutResId(), container, false)
         return mView
     }
 
-    abstract fun getLayoutResId():Int
+    abstract fun getLayoutResId(): Int
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getBundle()
@@ -26,6 +26,6 @@ abstract class BaseFragment : Fragment(){
 
     abstract fun getBundle()
 
-    abstract fun  initView()
+    abstract fun initView()
     abstract fun initData()
 }

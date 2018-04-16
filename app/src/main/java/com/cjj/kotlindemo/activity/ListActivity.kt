@@ -15,29 +15,29 @@ import com.cjj.kotlindemo.interfac.OnItemClickListener
 class ListActivity : Activity(), OnItemClickListener {
 
 
-    var itemList:ArrayList<Item>?= arrayListOf()
-    var ryListView:RecyclerView ?=null
-    var listAdapter: ListAdapter?=null
+    private var itemList: ArrayList<Item>? = arrayListOf()
+    private var ryListView: RecyclerView? = null
+    private var listAdapter: ListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liat)
-        ryListView=findViewById(R.id.ry_list)
-        var  item= Item()
-        item.name="加湿器"
-        item.url="http://img.alicdn.com/imgextra/i1/6000000001128/TB22x5ueEvMR1JjSZPcXXc1tFXa_!!6000000001128-0-imgsearch_baichuan.jpg"
-        for (i in 0..10){
+        ryListView = findViewById(R.id.ry_list)
+        var item = Item()
+        item.name = "加湿器"
+        item.url = "http://img.alicdn.com/imgextra/i1/6000000001128/TB22x5ueEvMR1JjSZPcXXc1tFXa_!!6000000001128-0-imgsearch_baichuan.jpg"
+        for (i in 0..10) {
             itemList?.add(item)
         }
-        listAdapter= ListAdapter(this, itemList!!)
-        ryListView?.adapter=listAdapter
+        listAdapter = ListAdapter(this, itemList!!)
+        ryListView?.adapter = listAdapter
         ryListView?.addItemDecoration(SpacesItemDecoration(16))
-        ryListView?.layoutManager=LinearLayoutManager(this)
+        ryListView?.layoutManager = LinearLayoutManager(this)
         listAdapter!!.setOnItemClickListener(this)
     }
 
-    override fun onItemClick(position: Int, name: String?){
-        Toast.makeText(this,"position : $position+, name : $name",Toast.LENGTH_SHORT).show()
+    override fun onItemClick(position: Int, name: String?) {
+        Toast.makeText(this, "position : $position+, name : $name", Toast.LENGTH_SHORT).show()
 
     }
 

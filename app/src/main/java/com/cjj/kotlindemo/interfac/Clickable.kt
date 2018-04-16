@@ -5,5 +5,5 @@ package com.cjj.kotlindemo.interfac
  */
 interface Clickable {
     fun click()
-    fun showOff()= println("I'm clickable!")
+    fun showOff() = println("I'm clickable!")
 }

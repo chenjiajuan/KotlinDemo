@@ -11,18 +11,18 @@ import android.view.ViewGroup
  * Created by chenjiajuan on 2018/4/9.
  */
 class MaxLinearLayoutManager @JvmOverloads constructor(
-        context: Context):
+        context: Context) :
         LinearLayoutManager(context) {
 
     private val mMeasuredDimension = IntArray(2)
-    private val TAG = MaxLinearLayoutManager::class.java!!.getSimpleName()
+    private val TAG = MaxLinearLayoutManager::class.java!!.simpleName
 
     override fun onMeasure(recycler: RecyclerView.Recycler?, state: RecyclerView.State?, widthSpec: Int, heightSpec: Int) {
         val widthMode = View.MeasureSpec.getMode(widthSpec)
         val heightMode = View.MeasureSpec.getMode(heightSpec)
         val widthSize = View.MeasureSpec.getSize(widthSpec)
         val heightSize = View.MeasureSpec.getSize(heightSpec)
-        Log.i(TAG, "onMeasure called. \nwidthMode " + widthMode
+        Log.e(TAG, "onMeasure called. \nwidthMode " + widthMode
                 + " \nheightMode " + heightSpec
                 + " \nwidthSize " + widthSize
                 + " \nheightSize " + heightSize
@@ -37,12 +37,14 @@ class MaxLinearLayoutManager @JvmOverloads constructor(
                     mMeasuredDimension)
 
             if (orientation == LinearLayoutManager.HORIZONTAL) {
-                width = + mMeasuredDimension[0]
+                //横向，累计宽度，高度就是第一个测量值
+                width = +mMeasuredDimension[0]
                 if (i == 0) {
                     height = mMeasuredDimension[1]
                 }
             } else {
-                height = + mMeasuredDimension[1]
+                //竖向，累计高度，宽度就是第一个测量值
+                height = +mMeasuredDimension[1]
                 if (i == 0) {
                     width = mMeasuredDimension[0]
                 }
@@ -55,7 +57,6 @@ class MaxLinearLayoutManager @JvmOverloads constructor(
         setMeasuredDimension(width, height)
 
     }
-
 
 
     private fun measureScrapChild(recycler: RecyclerView.Recycler, position: Int, widthSpec: Int,

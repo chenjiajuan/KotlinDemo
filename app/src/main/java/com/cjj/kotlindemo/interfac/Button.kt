@@ -1,6 +1,6 @@
 package com.cjj.kotlindemo.interfac
 
-class Button:Clickable,Focusable {
+class Button : Clickable, Focusable {
     override fun showOff() {
         super<Clickable>.showOff()
         super<Focusable>.showOff()

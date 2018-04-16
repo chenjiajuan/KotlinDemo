@@ -11,19 +11,19 @@ import com.cjj.kotlindemo.view.VTipViewLayout
 
 
 class MainActivity : Activity() {
-    private var tvFirst: TextView?=null
-    private var viewGroup: FrameLayout?=null
+    private var tvFirst: TextView? = null
+    private var viewGroup: FrameLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tvFirst=findViewById(R.id.tv_tip)
-        viewGroup=findViewById(R.id.viewGroupLayout)
-        tvFirst!!.text="Hello World !!!!!!"
+        tvFirst = findViewById(R.id.tv_tip)
+        viewGroup = findViewById(R.id.viewGroupLayout)
+        tvFirst!!.text = "Hello World !!!!!!"
         tvFirst!!.setTextColor(Color.BLUE)
         tvFirst!!.setOnClickListener({
             //Toast.makeText(this,"Hello World",Toast.LENGTH_SHORT).show()
-            var intent=Intent(this, HomeActivity::class.java)
+            var intent = Intent(this, HomeActivity::class.java)
             this.startActivity(intent)
         })
 
@@ -43,13 +43,13 @@ class MainActivity : Activity() {
     }
 
     private fun addView(viewGroup: FrameLayout?) {
-        var  vTioView= VTipViewLayout(this)
+        var vTioView = VTipViewLayout(this)
         //非空断言，如果为空的话，此处抛出异常
         vTioView.show("测试啦啦啦", viewGroup!!)
 
     }
 
-    fun strLen(s:String?)=s!!.length
+    fun strLen(s: String?) = s!!.length
 
     private fun testFourth() {
         println("Hello Kotlin ".lastChar())
@@ -58,71 +58,71 @@ class MainActivity : Activity() {
     }
 
     private fun testThree() {
-        var  list= listOf("A","B","C")
+        var list = listOf("A", "B", "C")
         println(joinToString3(list))
     }
 
     private fun testTwo() {
-        var  list= listOf(1,2,3)
-       println(joinToString2(list))
+        var list = listOf(1, 2, 3)
+        println(joinToString2(list))
     }
 
     private fun testOne() {
-        var  list= listOf(1,2,3)
-        var array= arrayListOf(1,2,3)
-        var arrayString= arrayListOf("1","2","3")
-        var map= mapOf(0 to "1",2 to "3")
-        var map2= mapOf<Int,String>()
+        var list = listOf(1, 2, 3)
+        var array = arrayListOf(1, 2, 3)
+        var arrayString = arrayListOf("1", "2", "3")
+        var map = mapOf(0 to "1", 2 to "3")
+        var map2 = mapOf<Int, String>()
         println("===============")
         println(map.size)
-        for ( i in map.entries){
+        for (i in map.entries) {
             println("map : i = $ ,${map[0]}")
 
         }
         println("===============")
-        for ((i,value) in map){
+        for ((i, value) in map) {
             println("map2 : i = $i ,value = $value")
         }
         println("===============")
-        var  hashMap= hashMapOf(0 to "ABC",1 to "DEF")
-        for ((index ,value) in hashMap){
+        var hashMap = hashMapOf(0 to "ABC", 1 to "DEF")
+        for ((index, value) in hashMap) {
             println("map2 : i = $index ,value = $value")
         }
-        hashMap.put(1,"啦啦啦")
+        hashMap.put(1, "啦啦啦")
         println("===============")
-        for ((index ,value) in hashMap){
+        for ((index, value) in hashMap) {
             println("map2 : i = $index ,value = $value")
         }
         println("===============")
-        println(joinToString(list,";","(",")"))
-        println(joinToString(list,separator = ";",prefix = "(",postfix = ")"))
+        println(joinToString(list, ";", "(", ")"))
+        println(joinToString(list, separator = ";", prefix = "(", postfix = ")"))
     }
 
-    fun  <T> joinToString(
-            collection:Collection<T>,
-            separator:String,
-            prefix:String,
-            postfix:String
-    ):String{
-        var result=StringBuilder(prefix)
-        for ((index,value) in collection.withIndex()){
-              if (index>0)
+    fun <T> joinToString(
+            collection: Collection<T>,
+            separator: String,
+            prefix: String,
+            postfix: String
+    ): String {
+        var result = StringBuilder(prefix)
+        for ((index, value) in collection.withIndex()) {
+            if (index > 0)
                 result.append(separator)
-                result.append(value)
+            result.append(value)
         }
         result.append(postfix)
         return result.toString()
     }
 
-    fun  <T> joinToString2(
-            collection:Collection<T>,
-            separator:String=",",
-            prefix:String="(",
-            postfix:String=")"
-    ):String{
-        var result=StringBuilder(prefix)
-        for ((index,value) in collection.withIndex()){
-            if (index>0)
+    fun <T> joinToString2(
+            collection: Collection<T>,
+            separator: String = ",",
+            prefix: String = "(",
+            postfix: String = ")"
+    ): String {
+        var result = StringBuilder(prefix)
+        for ((index, value) in collection.withIndex()) {
+            if (index > 0)
                 result.append(separator)
             result.append(value)
         }

@@ -20,20 +20,20 @@ import java.io.IOException
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val TAG = HomeActivity::class.java!!.simpleName
-    var toggle :ActionBarDrawerToggle?=null
-    var movieFragment: MovieFragment?=null
-    var booksFragment: BooksFragment?=null
+    var toggle: ActionBarDrawerToggle? = null
+    var movieFragment: MovieFragment? = null
+    var booksFragment: BooksFragment? = null
     val host = "https://acs.m.taobao.com/gw/mtop.taobao.detail.getdetail/6.0/?data="
     val tag = "%7B%22itemNumId%22%3A%22"
     val tag2 = "%22%2C%22detail_v%22%3A%223.1.0%22%7D"
-//    val url = host + tag + "537096553806" + tag2 + "&ttid=142857@taobao_iphone_7.10.3"
+    //    val url = host + tag + "537096553806" + tag2 + "&ttid=142857@taobao_iphone_7.10.3"
 //    val url = "https://api.douban.com/v2/book/search"
     val url = "https://api.douban.com/v2/book/search?q=悲惨世界&count=2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        toggle= ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close)
         drawerLayout?.addDrawerListener(toggle!!)
         toggle?.syncState()
@@ -45,11 +45,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun initGetRequestData() {
-       var okphht= OkHttpClient()
-        var builder=Request.Builder().get().url(url)
-        var  request=builder.build()
-        var call=okphht.newCall(request)
-        call.enqueue(object : Callback{
+        var okphht = OkHttpClient()
+        var builder = Request.Builder().get().url(url)
+        var request = builder.build()
+        var call = okphht.newCall(request)
+        call.enqueue(object : Callback {
             override fun onFailure(call: okhttp3.Call?, e: IOException?) {
             }
 
@@ -62,51 +62,50 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun initData() {
-        var okhttp=OkHttpClient()
-        var builder= Request.Builder().url(url)
-         var request=builder.build()
-        var call=okhttp.newCall(request)
-         call.enqueue(object : Callback {
-             override fun onFailure(call: okhttp3.Call?, e: IOException?) {
-             }
+        var okhttp = OkHttpClient()
+        var builder = Request.Builder().url(url)
+        var request = builder.build()
+        var call = okhttp.newCall(request)
+        call.enqueue(object : Callback {
+            override fun onFailure(call: okhttp3.Call?, e: IOException?) {
+            }
 
-             override fun onResponse(call: okhttp3.Call?, response: Response?) {
-                 var json=response?.body()?.string()
-                 Log.e(TAG,json)
-             }
+            override fun onResponse(call: okhttp3.Call?, response: Response?) {
+                var json = response?.body()?.string()
+                Log.e(TAG, json)
+            }
 
 
-
-         })
+        })
 
     }
 
     private fun showArea() {
-        val supportFragmentManager=supportFragmentManager
-        val  fragmentTransaction=supportFragmentManager.beginTransaction()
+        val supportFragmentManager = supportFragmentManager
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.fl_main_content, BooksFragment.newInstance())
         fragmentTransaction.commit()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val fragmentTransaction=supportFragmentManager.beginTransaction()
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
         hideAllFragment(fragmentTransaction)
-        when (item.itemId){
+        when (item.itemId) {
             R.id.nav_menu_picture -> {
                 movieFragment?.let {
                     fragmentTransaction.show(it)
                 } ?: MovieFragment.newInstance().let {
-                    movieFragment =it
-                    fragmentTransaction.replace(R.id.fl_main_content, movieFragment,"picture")
+                    movieFragment = it
+                    fragmentTransaction.replace(R.id.fl_main_content, movieFragment, "picture")
                     fragmentTransaction.show(it)
                 }
             }
             R.id.nav_menu_area -> {
                 booksFragment?.let {
                     fragmentTransaction.show(it)
-                }?: BooksFragment.newInstance().let {
-                    booksFragment =it
-                    fragmentTransaction.replace(R.id.fl_main_content, booksFragment,"area")
+                } ?: BooksFragment.newInstance().let {
+                    booksFragment = it
+                    fragmentTransaction.replace(R.id.fl_main_content, booksFragment, "area")
                     fragmentTransaction.show(it)
                 }
             }

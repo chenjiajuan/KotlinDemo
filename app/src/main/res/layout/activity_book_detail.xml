@@ -11,14 +11,14 @@
         >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:background="@color/color_f898e80"
         >
         <ImageView
             android:id="@+id/ivDetailPicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_width="200dp"
+            android:layout_height="280dp"
+            android:layout_centerHorizontal="true"
             />
     </RelativeLayout>
        <RelativeLayout

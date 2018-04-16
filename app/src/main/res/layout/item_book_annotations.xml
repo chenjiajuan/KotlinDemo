@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="150dp"
-    android:background="@color/color_fffffff"
+    android:background="@drawable/abc_popup_background_mtrl_mult"
     >
     <RelativeLayout
         android:id="@+id/rlTop"
@@ -48,6 +48,7 @@
         android:layout_marginTop="10dp"
         android:paddingBottom="35dp"
         android:ellipsize="end"
+        android:maxLines="3"
         />
 
     <RelativeLayout

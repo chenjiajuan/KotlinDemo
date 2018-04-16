@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KotlinDemo</string>
+    <string name="app_name">测试UI</string>
     <string name="navigation_drawer_open">菜单打开</string>
     <string name="navigation_drawer_close">菜单关闭</string>
 </resources>

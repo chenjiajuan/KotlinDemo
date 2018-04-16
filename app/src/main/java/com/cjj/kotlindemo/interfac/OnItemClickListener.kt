@@ -5,5 +5,5 @@ package com.cjj.kotlindemo.interfac
  */
 interface OnItemClickListener {
 
-    fun onItemClick(position:Int,name:String?)
+    fun onItemClick(position: Int, name: String?)
 }

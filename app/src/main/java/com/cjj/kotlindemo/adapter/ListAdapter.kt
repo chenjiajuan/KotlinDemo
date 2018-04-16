@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.cjj.kotlindemo.R
 import com.cjj.kotlindemo.bo.Item
 import com.cjj.kotlindemo.interfac.OnItemClickListener
@@ -16,24 +17,29 @@ import com.cjj.kotlindemo.interfac.OnItemClickListener
  * Created by chenjiajuan on 2018/4/9.
  */
 class ListAdapter : RecyclerView.Adapter<ListAdapter.BookListViewHolder> {
-    var list:ArrayList<Item> ?=null
-    var context:Context?=null
-    var onItemClickItem:OnItemClickListener?=null
-    constructor(context: Context,list: ArrayList<Item>){
-        this.context=context
-        this.list=list
+    var list: ArrayList<Item>? = null
+    var context: Context? = null
+    var onItemClickItem: OnItemClickListener? = null
+    var requestOptions = RequestOptions()
+
+    constructor(context: Context, list: ArrayList<Item>) {
+        this.context = context
+        this.list = list
+        requestOptions.override(context?.resources?.getDimension(R.dimen.dp_100)!!.toInt(), context?.resources?.getDimension(R.dimen.dp_100)!!.toInt())
     }
 
-    open fun setOnItemClickListener(onItemClickItem:OnItemClickListener){
-        this.onItemClickItem=onItemClickItem
+    open fun setOnItemClickListener(onItemClickItem: OnItemClickListener) {
+        this.onItemClickItem = onItemClickItem
 
     }
 
     override fun onBindViewHolder(holder: BookListViewHolder?, position: Int) {
-        holder?.tvListItem!!.text=list?.get(position)?.name
-        Glide.with(context).load(list?.get(position)?.url).into(holder.ivListItem)
+        holder?.tvListItem!!.text = list?.get(position)?.name
+        Glide.with(context).load(list?.get(position)?.url)
+                .apply(requestOptions)
+                .into(holder.ivListItem)
         holder?.ivListItem?.setOnClickListener({
-           this.onItemClickItem?.onItemClick(position,list?.get(position)?.name)
+            this.onItemClickItem?.onItemClick(position, list?.get(position)?.name)
         })
     }
 
@@ -45,12 +51,13 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.BookListViewHolder> {
         return list?.size as Int
     }
 
-    class BookListViewHolder:RecyclerView.ViewHolder{
-        var tvListItem:TextView?=null
-        var ivListItem:ImageView?=null
-        constructor(view:View):super(view){
-            tvListItem=view.findViewById(R.id.tv_list_item)
-            ivListItem=view.findViewById(R.id.iv_list_item)
+    class BookListViewHolder : RecyclerView.ViewHolder {
+        var tvListItem: TextView? = null
+        var ivListItem: ImageView? = null
+
+        constructor(view: View) : super(view) {
+            tvListItem = view.findViewById(R.id.tv_list_item)
+            ivListItem = view.findViewById(R.id.iv_list_item)
         }
 
     }
