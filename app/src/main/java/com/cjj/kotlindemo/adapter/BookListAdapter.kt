@@ -11,7 +11,6 @@ import android.widget.RatingBar
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.cjj.kotlindemo.R
 import com.cjj.kotlindemo.bo.BookItem
 import com.cjj.kotlindemo.interfac.OnItemClickListener
 
@@ -28,7 +27,6 @@ class BookListAdapter : RecyclerView.Adapter<BookListAdapter.BookItemViewHolder>
     constructor(context: Context, bookList: BookItem) {
         this.context = context
         this.mBookItem = bookList
-//        requestOptions.override(context?.resources?.getDimension(R.dimen.dp_100)!!.toInt(), context?.resources?.getDimension(R.dimen.dp_160)!!.toInt())
 
     }
 
@@ -55,7 +53,13 @@ class BookListAdapter : RecyclerView.Adapter<BookListAdapter.BookItemViewHolder>
         return BookItemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_book_describe, parent, false))
     }
 
-    override fun getItemCount(): Int = mBookItem!!.books.size
+    override fun getItemCount():  Int {
+        return if (mBookItem!=null){
+            mBookItem!!.books.size
+        }else{
+            0
+        }
+    }
 
     class BookItemViewHolder : RecyclerView.ViewHolder {
         var ivBookPicture: ImageView? = null

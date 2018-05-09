@@ -16,6 +16,10 @@ abstract class BaseFragment : Fragment() {
         return mView
     }
 
+      fun getRootView():View{
+         return mView!!
+     }
+
     abstract fun getLayoutResId(): Int
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

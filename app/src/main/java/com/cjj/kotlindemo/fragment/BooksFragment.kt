@@ -39,7 +39,7 @@ class BooksFragment : BaseFragment() {
         var url="https://api.douban.com/v2/book/search?tag="
         var fragmentList = ArrayList<Fragment>()
         TAB_TITLES.indices.mapTo(fragmentList) {
-            ContentFragment.getInstance("$url${TAB_TITLES[it]}") }
+            ContentFragment.getInstance(url,TAB_TITLES[it])}
         return fragmentList
     }
 

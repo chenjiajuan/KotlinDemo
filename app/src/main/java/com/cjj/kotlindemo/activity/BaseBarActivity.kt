@@ -12,9 +12,9 @@ import com.cjj.kotlindemo.R
  */
 abstract class BaseBarActivity : Activity() {
 
-    var ivBaseBack: ImageView? = null
-    var tvBaseName: TextView? = null
-    var rlContent: RelativeLayout? = null
+    private var ivBaseBack: ImageView? = null
+    private var tvBaseName: TextView? = null
+    private var rlContent: RelativeLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_bar)

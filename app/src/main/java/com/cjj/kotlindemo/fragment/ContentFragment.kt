@@ -22,7 +22,7 @@ import java.io.IOException
  * Created by chenjiajuan on 2018/4/12.
  */
 class ContentFragment : BaseFragment() {
-    private val TAG: String = ContentFragment::class.java!!.simpleName
+    private val TAG: String = ContentFragment::class.java.simpleName
     private var url: String = ""
     private var bookAdapter: BookListAdapter? = null
     private var type: String? = null
@@ -31,7 +31,7 @@ class ContentFragment : BaseFragment() {
     override fun getBundle() {
         type = arguments.getString("url")
         title=arguments.getString("title")
-        url = type+"&count=40"
+        url = type+title+"&count=40"
         Log.e(TAG, " url : $url")
     }
 
@@ -67,7 +67,7 @@ class ContentFragment : BaseFragment() {
             override fun onResponse(call: Call?, response: Response?) {
                 var string = response?.body()?.string()
                 var data = JSON.parseObject(string, BookItem::class.java)
-                Log.e(TAG, "data : " + data.books.toString())
+                Log.e(TAG, "data : " + data?.books.toString())
                 bookAdapter = BookListAdapter(context, data)
                 bookAdapter?.setOnItemClickListener(object : OnItemClickListener {
                     override fun onItemClick(position: Int, name: String?) {

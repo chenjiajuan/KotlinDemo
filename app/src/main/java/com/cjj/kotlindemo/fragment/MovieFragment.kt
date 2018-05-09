@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_books.*
  * Created by chenjiajuan on 2018/4/10.
  */
 class MovieFragment : BaseFragment() {
-    private var TAB_TITLES = arrayListOf("爱情", "喜剧","推理", "科幻")
+    private var TAB_TITLES = arrayListOf("热门","华语","爱情","欧美","日本","喜剧","推理", "科幻")
     override fun getBundle() {
     }
 
