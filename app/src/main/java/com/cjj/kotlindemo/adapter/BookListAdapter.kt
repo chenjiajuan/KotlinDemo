@@ -11,6 +11,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.cjj.kotlindemo.R
 import com.cjj.kotlindemo.bo.BookItem
 import com.cjj.kotlindemo.interfac.OnItemClickListener
 

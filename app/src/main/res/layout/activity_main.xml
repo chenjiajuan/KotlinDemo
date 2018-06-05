@@ -29,6 +29,26 @@
         android:id="@+id/viewGroupLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></FrameLayout>
+ <!--
+
+ <attr name="starImageSize" format="dimension"></attr>
+        <attr name="starCount" format="integer"></attr>
+        <attr name="startFillImage" format="reference"></attr>
+        <attr name="starEmptyImage" format="reference"></attr>
+        <attr name="starHalfImage" format="reference"></attr>
+        <attr name="starPadding" format="dimension"/>
+ !-->
+    <com.cjj.kotlindemo.view.RatingBar
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        app:starCount="5"
+        app:starImageSize="20dp"
+        app:startFillImage="@drawable/frodo_rate_star_small_on_holo_light"
+        app:starEmptyImage="@drawable/frodo_rate_star_small_off_holo_light"
+        app:starHalfImage="@drawable/frodo_rate_star_small_half_holo_light"
+        app:starPadding="@dimen/dp_5"
+        >
+    </com.cjj.kotlindemo.view.RatingBar>
 
 
 

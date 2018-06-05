@@ -20,15 +20,15 @@ import java.io.IOException
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val TAG = HomeActivity::class.java!!.simpleName
-    var toggle: ActionBarDrawerToggle? = null
-    var movieFragment: MovieFragment? = null
-    var booksFragment: BooksFragment? = null
-    val host = "https://acs.m.taobao.com/gw/mtop.taobao.detail.getdetail/6.0/?data="
-    val tag = "%7B%22itemNumId%22%3A%22"
-    val tag2 = "%22%2C%22detail_v%22%3A%223.1.0%22%7D"
+    private var toggle: ActionBarDrawerToggle? = null
+    private var movieFragment: MovieFragment? = null
+    private var booksFragment: BooksFragment? = null
+    private val host = "https://acs.m.taobao.com/gw/mtop.taobao.detail.getdetail/6.0/?data="
+    private val tag = "%7B%22itemNumId%22%3A%22"
+    private val tag2 = "%22%2C%22detail_v%22%3A%223.1.0%22%7D"
     //    val url = host + tag + "537096553806" + tag2 + "&ttid=142857@taobao_iphone_7.10.3"
 //    val url = "https://api.douban.com/v2/book/search"
-    val url = "https://api.douban.com/v2/book/search?q=悲惨世界&count=2"
+    private val url = "https://api.douban.com/v2/book/search?q=悲惨世界&count=2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
