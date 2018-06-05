@@ -6,6 +6,5 @@
 </div>
 
 
-<div align = center >
+
 ![](https://github.com/chenjiajuan/KotlinDemo/blob/master/bookdetail.png)
-</div>
